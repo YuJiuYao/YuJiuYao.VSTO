@@ -1,5 +1,8 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.Windows.Forms;
 using Microsoft.Office.Tools.Ribbon;
+using VSTO.Common;
+using VSTO.Forms.Forms;
 
 namespace VSTO.Word
 {
@@ -15,6 +18,26 @@ namespace VSTO.Word
         private void buttonShowMessageBox_Click(object sender, RibbonControlEventArgs e)
         {
             MessageBox.Show(_application.ActiveDocument.ToString());
+        }
+
+        private void buttonUser_Click(object sender, RibbonControlEventArgs e)
+        {
+            MessageBox.Show($@"作者：{_application.UserName}");
+        }
+
+        private void btnOpenCusPane_Click(object sender, RibbonControlEventArgs e)
+        {
+
+        }
+
+        private void btnOpenPopupBox_Click(object sender, RibbonControlEventArgs e)
+        {
+            var popupBoxForm = new PopupBoxForm("https://www.youtube.com/", new ClientPortal(new Forms.BaseForms.WebFormView()))
+            {
+                Text = @"浮动弹框",
+                Size = new System.Drawing.Size(Convert.ToInt32(ParametersBaseHelper.WindowWidth * 0.75), Convert.ToInt32(ParametersBaseHelper.WindowHeight * 0.75))
+            };
+            popupBoxForm.ShowDialog();
         }
     }
 }

@@ -211,6 +211,8 @@
     can be found.
   -->
   <ItemGroup>
+    <Compile Include="ClientPortal.cs" />
+    <Compile Include="Common\ParametersHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -254,6 +256,25 @@
     </Compile>
     <AppDesigner Include="Properties\" />
     <None Include="VSTO.Word_TemporaryKey.pfx" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\VSTO.Common\VSTO.Common.csproj">
+      <Project>{AB0E390A-99EC-41AB-B1AB-EBD1BE5DD3E3}</Project>
+      <Name>VSTO.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VSTO.Forms\VSTO.Forms.csproj">
+      <Project>{398201AF-2D2C-4FEC-B619-327F4E73E4BF}</Project>
+      <Name>VSTO.Forms</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VSTO.Models\VSTO.Models.csproj">
+      <Project>{63B0FFD6-CB91-41EA-96DD-14E0350A760E}</Project>
+      <Name>VSTO.Models</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json">
+      <Version>13.0.4</Version>
+    </PackageReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

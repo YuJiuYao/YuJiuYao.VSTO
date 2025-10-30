@@ -36,46 +36,76 @@
         {
             this.customTab = this.Factory.CreateRibbonTab();
             this.groupDev = this.Factory.CreateRibbonGroup();
-            this.btnGroup = this.Factory.CreateRibbonButtonGroup();
+            this.btnGroupDevRowOne = this.Factory.CreateRibbonButtonGroup();
             this.buttonShowMessageBox = this.Factory.CreateRibbonButton();
-            this.buttonNext = this.Factory.CreateRibbonButton();
+            this.buttonUser = this.Factory.CreateRibbonButton();
+            this.btnGroupDevRowTwo = this.Factory.CreateRibbonButtonGroup();
+            this.btnOpenCusPane = this.Factory.CreateRibbonButton();
+            this.btnOpenPopupBox = this.Factory.CreateRibbonButton();
             this.groupFunny = this.Factory.CreateRibbonGroup();
             this.customTab.SuspendLayout();
             this.groupDev.SuspendLayout();
-            this.btnGroup.SuspendLayout();
+            this.btnGroupDevRowOne.SuspendLayout();
+            this.btnGroupDevRowTwo.SuspendLayout();
             this.SuspendLayout();
             // 
             // customTab
             // 
             this.customTab.Groups.Add(this.groupDev);
             this.customTab.Groups.Add(this.groupFunny);
-            this.customTab.Label = "YuJiuYao";
+            this.customTab.Label = "YuJiuYao工具箱";
             this.customTab.Name = "customTab";
             // 
             // groupDev
             // 
-            this.groupDev.Items.Add(this.btnGroup);
+            this.groupDev.Items.Add(this.btnGroupDevRowOne);
+            this.groupDev.Items.Add(this.btnGroupDevRowTwo);
             this.groupDev.Label = "开发者测试";
             this.groupDev.Name = "groupDev";
             // 
-            // btnGroup
+            // btnGroupDevRowOne
             // 
-            this.btnGroup.Items.Add(this.buttonShowMessageBox);
-            this.btnGroup.Items.Add(this.buttonNext);
-            this.btnGroup.Name = "btnGroup";
+            this.btnGroupDevRowOne.Items.Add(this.buttonShowMessageBox);
+            this.btnGroupDevRowOne.Items.Add(this.buttonUser);
+            this.btnGroupDevRowOne.Name = "btnGroupDevRowOne";
             // 
             // buttonShowMessageBox
             // 
             this.buttonShowMessageBox.Label = "测试";
             this.buttonShowMessageBox.Name = "buttonShowMessageBox";
-            this.buttonShowMessageBox.ShowImage = true;
             this.buttonShowMessageBox.OfficeImageId = "UpdateFolder";
+            this.buttonShowMessageBox.ShowImage = true;
             this.buttonShowMessageBox.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.buttonShowMessageBox_Click);
             // 
-            // buttonNext
+            // buttonUser
             // 
-            this.buttonNext.Label = "下一个";
-            this.buttonNext.Name = "buttonNext";
+            this.buttonUser.Label = "作者";
+            this.buttonUser.Name = "buttonUser";
+            this.buttonUser.OfficeImageId = "UpdateFolder";
+            this.buttonUser.ShowImage = true;
+            this.buttonUser.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.buttonUser_Click);
+            // 
+            // btnGroupDevRowTwo
+            // 
+            this.btnGroupDevRowTwo.Items.Add(this.btnOpenCusPane);
+            this.btnGroupDevRowTwo.Items.Add(this.btnOpenPopupBox);
+            this.btnGroupDevRowTwo.Name = "btnGroupDevRowTwo";
+            // 
+            // btnOpenCusPane
+            // 
+            this.btnOpenCusPane.Label = "侧边弹框";
+            this.btnOpenCusPane.Name = "btnOpenCusPane";
+            this.btnOpenCusPane.OfficeImageId = "UpdateFolder";
+            this.btnOpenCusPane.ShowImage = true;
+            this.btnOpenCusPane.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnOpenCusPane_Click);
+            // 
+            // btnOpenPopupBox
+            // 
+            this.btnOpenPopupBox.Label = "浮动弹框";
+            this.btnOpenPopupBox.Name = "btnOpenPopupBox";
+            this.btnOpenPopupBox.OfficeImageId = "UpdateFolder";
+            this.btnOpenPopupBox.ShowImage = true;
+            this.btnOpenPopupBox.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnOpenPopupBox_Click);
             // 
             // groupFunny
             // 
@@ -92,8 +122,10 @@
             this.customTab.PerformLayout();
             this.groupDev.ResumeLayout(false);
             this.groupDev.PerformLayout();
-            this.btnGroup.ResumeLayout(false);
-            this.btnGroup.PerformLayout();
+            this.btnGroupDevRowOne.ResumeLayout(false);
+            this.btnGroupDevRowOne.PerformLayout();
+            this.btnGroupDevRowTwo.ResumeLayout(false);
+            this.btnGroupDevRowTwo.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -103,9 +135,12 @@
         internal Microsoft.Office.Tools.Ribbon.RibbonTab customTab;
         internal Microsoft.Office.Tools.Ribbon.RibbonGroup groupDev;
         internal Microsoft.Office.Tools.Ribbon.RibbonGroup groupFunny;
-        internal Microsoft.Office.Tools.Ribbon.RibbonButtonGroup btnGroup;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButtonGroup btnGroupDevRowOne;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButtonGroup btnGroupDevRowTwo;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton buttonShowMessageBox;
-        internal Microsoft.Office.Tools.Ribbon.RibbonButton buttonNext;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton buttonUser;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton btnOpenCusPane;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton btnOpenPopupBox;
     }
 
     partial class ThisRibbonCollection
