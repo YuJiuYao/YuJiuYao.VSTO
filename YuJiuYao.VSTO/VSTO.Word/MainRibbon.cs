@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Drawing;
+using System.IO;
 using System.Windows.Forms;
 using Microsoft.Office.Tools.Ribbon;
 using VSTO.Common;
@@ -17,27 +19,30 @@ namespace VSTO.Word
             _application = Globals.ThisAddIn.Application;
         }
 
-        private void buttonShowMessageBox_Click(object sender, RibbonControlEventArgs e)
+        private void ShowMessageBox_Click(object sender, RibbonControlEventArgs e)
         {
             MessageBox.Show(_application.ActiveDocument.ToString());
         }
 
-        private void buttonUser_Click(object sender, RibbonControlEventArgs e)
+        private void User_Click(object sender, RibbonControlEventArgs e)
         {
             MessageBox.Show($@"作者：{_application.UserName}");
         }
 
-        private void btnOpenCusPane_Click(object sender, RibbonControlEventArgs e)
+        private void OpenCusPane_Click(object sender, RibbonControlEventArgs e)
         {
             CustomTaskPaneHelper.OpenCustomTaskPane("https://www.yuzheng.work/", ((RibbonButton)sender).Label);
         }
 
-        private void btnOpenPopupBox_Click(object sender, RibbonControlEventArgs e)
+        private void OpenPopupBox_Click(object sender, RibbonControlEventArgs e)
         {
             var popupBoxForm = new PopupBoxForm("https://www.youtube.com/", new ClientPortal(new Forms.BaseForms.WebFormView()))
             {
+                Dock = DockStyle.None,
+                Icon = Properties.Resources.popupBoxFormIco,
                 Text = @"浮动弹框",
-                Size = new System.Drawing.Size(Convert.ToInt32(ParametersBaseHelper.WindowWidth * 0.75), Convert.ToInt32(ParametersBaseHelper.WindowHeight * 0.75))
+                Size = new System.Drawing.Size(Convert.ToInt32(ParametersBaseHelper.WindowWidth * 0.75),
+                    Convert.ToInt32(ParametersBaseHelper.WindowHeight * 0.75))
             };
             popupBoxForm.ShowDialog();
         }

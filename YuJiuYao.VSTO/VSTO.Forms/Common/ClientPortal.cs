@@ -10,7 +10,7 @@ namespace VSTO.Forms.Common
     [ComVisible(true)]
     public class ClientPortal
     {
-        private WebFormView _webFormView;
+        private readonly WebFormView _webFormView;
 
         /// <summary>
         /// 构造函数，如果ctl没用的话，建议删除

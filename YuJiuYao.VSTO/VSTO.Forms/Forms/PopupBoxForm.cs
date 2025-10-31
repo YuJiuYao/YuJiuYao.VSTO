@@ -27,10 +27,10 @@ namespace VSTO.Forms.Forms
         /// </summary>
         private void Init()
         {
-            _userControlView = new UserControlView(_url, _jsApi);
-
-            _userControlView.Dock = DockStyle.Fill;
-
+            _userControlView = new UserControlView(_url, _jsApi)
+            {
+                Dock = DockStyle.Fill
+            };
             Controls.Add(_userControlView);
         }
 

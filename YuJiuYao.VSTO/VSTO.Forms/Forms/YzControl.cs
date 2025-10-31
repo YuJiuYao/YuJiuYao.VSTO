@@ -35,7 +35,7 @@ namespace VSTO.Forms.Forms
                 }
                 WebView2 = webFormView.WebView2;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 // LogHelper.Instance.Error(ex);
             }

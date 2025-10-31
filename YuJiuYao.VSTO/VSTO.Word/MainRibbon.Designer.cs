@@ -75,7 +75,7 @@
             this.buttonShowMessageBox.Name = "buttonShowMessageBox";
             this.buttonShowMessageBox.OfficeImageId = "UpdateFolder";
             this.buttonShowMessageBox.ShowImage = true;
-            this.buttonShowMessageBox.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.buttonShowMessageBox_Click);
+            this.buttonShowMessageBox.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.ShowMessageBox_Click);
             // 
             // buttonUser
             // 
@@ -83,7 +83,7 @@
             this.buttonUser.Name = "buttonUser";
             this.buttonUser.OfficeImageId = "UpdateFolder";
             this.buttonUser.ShowImage = true;
-            this.buttonUser.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.buttonUser_Click);
+            this.buttonUser.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.User_Click);
             // 
             // btnGroupDevRowTwo
             // 
@@ -97,7 +97,7 @@
             this.btnOpenCusPane.Name = "btnOpenCusPane";
             this.btnOpenCusPane.OfficeImageId = "UpdateFolder";
             this.btnOpenCusPane.ShowImage = true;
-            this.btnOpenCusPane.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnOpenCusPane_Click);
+            this.btnOpenCusPane.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.OpenCusPane_Click);
             // 
             // btnOpenPopupBox
             // 
@@ -105,7 +105,7 @@
             this.btnOpenPopupBox.Name = "btnOpenPopupBox";
             this.btnOpenPopupBox.OfficeImageId = "UpdateFolder";
             this.btnOpenPopupBox.ShowImage = true;
-            this.btnOpenPopupBox.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnOpenPopupBox_Click);
+            this.btnOpenPopupBox.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.OpenPopupBox_Click);
             // 
             // groupFunny
             // 

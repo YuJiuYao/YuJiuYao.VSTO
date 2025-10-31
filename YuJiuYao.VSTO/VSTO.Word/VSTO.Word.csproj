@@ -204,7 +204,7 @@
       <SubType>Code</SubType>
     </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -253,6 +253,12 @@
       <Project>{398201AF-2D2C-4FEC-B619-327F4E73E4BF}</Project>
       <Name>VSTO.Forms</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\popupBoxForm.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\favicon-online.ico" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
