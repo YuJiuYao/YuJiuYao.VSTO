@@ -1,7 +1,9 @@
 ﻿using System;
-using System.Runtime.InteropServices;
 using System.Reflection;
+using System.Runtime.InteropServices;
+using System.Windows.Forms;
 using Newtonsoft.Json;
+using VSTO.Extension;
 using VSTO.Forms.BaseForms;
 using VSTO.Models;
 
@@ -29,7 +31,7 @@ namespace VSTO.Forms.Common
         /// <param name="data"></param>
         /// <param name="evalJs"></param>
         /// <returns></returns>
-        public string GetData(string action, string data, string evalJs = "")
+        public string ExecuteJs(string action, string data, string evalJs = "")
         {
             try
             {
@@ -69,6 +71,9 @@ namespace VSTO.Forms.Common
             var selType = selection.GetType();
             // 调用 TypeText 方法
             selType.InvokeMember("TypeText", BindingFlags.InvokeMethod, null, selection, new object[] { text });
+
+            MessageBox.Show($@"当前页数：{app.GetActiveDocumentPageCount()}");
+            app.SpacePagePosition(app.GetActiveDocumentPageCount() - 5);
         }
 
         private object GetWordApp()

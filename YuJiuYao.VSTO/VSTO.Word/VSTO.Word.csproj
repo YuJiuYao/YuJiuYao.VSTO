@@ -249,9 +249,17 @@
       <Project>{AB0E390A-99EC-41AB-B1AB-EBD1BE5DD3E3}</Project>
       <Name>VSTO.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\VSTO.Extension\VSTO.Extension.csproj">
+      <Project>{74a82c17-7831-48fc-b44f-b9e59a8dcb4d}</Project>
+      <Name>VSTO.Extension</Name>
+    </ProjectReference>
     <ProjectReference Include="..\VSTO.Forms\VSTO.Forms.csproj">
       <Project>{398201AF-2D2C-4FEC-B619-327F4E73E4BF}</Project>
       <Name>VSTO.Forms</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VSTO.Models\VSTO.Models.csproj">
+      <Project>{63B0FFD6-CB91-41EA-96DD-14E0350A760E}</Project>
+      <Name>VSTO.Models</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
