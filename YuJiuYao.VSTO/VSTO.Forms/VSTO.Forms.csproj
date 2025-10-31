@@ -58,6 +58,7 @@
     <Compile Include="BaseForms\WebFormView.Designer.cs">
       <DependentUpon>WebFormView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Common\ClientPortal.cs" />
     <Compile Include="Common\FuncHelper.cs" />
     <Compile Include="Common\ParametersHelper.cs" />
     <Compile Include="Forms\PopupBoxForm.cs">
@@ -66,8 +67,15 @@
     <Compile Include="Forms\PopupBoxForm.Designer.cs">
       <DependentUpon>PopupBoxForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\YzControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\YzControl.Designer.cs">
+      <DependentUpon>YzControl.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -79,10 +87,17 @@
       <Project>{AB0E390A-99EC-41AB-B1AB-EBD1BE5DD3E3}</Project>
       <Name>VSTO.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\VSTO.Models\VSTO.Models.csproj">
+      <Project>{63B0FFD6-CB91-41EA-96DD-14E0350A760E}</Project>
+      <Name>VSTO.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.Web.WebView2">
       <Version>1.0.3537.50</Version>
+    </PackageReference>
+    <PackageReference Include="Newtonsoft.Json">
+      <Version>13.0.4</Version>
     </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

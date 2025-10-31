@@ -2,7 +2,9 @@
 using System.Windows.Forms;
 using Microsoft.Office.Tools.Ribbon;
 using VSTO.Common;
+using VSTO.Forms.Common;
 using VSTO.Forms.Forms;
+using VSTO.Word.Common;
 
 namespace VSTO.Word
 {
@@ -27,7 +29,7 @@ namespace VSTO.Word
 
         private void btnOpenCusPane_Click(object sender, RibbonControlEventArgs e)
         {
-
+            CustomTaskPaneHelper.OpenCustomTaskPane("https://www.yuzheng.work/", ((RibbonButton)sender).Label);
         }
 
         private void btnOpenPopupBox_Click(object sender, RibbonControlEventArgs e)

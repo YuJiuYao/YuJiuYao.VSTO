@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 using VSTO.Forms.BaseForms;
 using VSTO.Models;
 
-namespace VSTO.Word
+namespace VSTO.Forms.Common
 {
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ComVisible(true)]

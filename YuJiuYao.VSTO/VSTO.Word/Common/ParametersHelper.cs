@@ -6,7 +6,7 @@ namespace VSTO.Word.Common
 {
     internal class ParametersHelper : ParametersBaseHelper
     {
-        public static CustomTaskPane _customTaskPane = null;
+        public static CustomTaskPane CustomTaskPane = null;
 
         /// <summary>
         /// 当前项目中每个文档中左侧栏集合
