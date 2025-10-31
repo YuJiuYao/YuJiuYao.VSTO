@@ -36,7 +36,7 @@ namespace VSTO.Forms.Common
             try
             {
                 var uri = new Uri(url, UriKind.Absolute);
-                return webCacheDir + uri.Host + "\\" + GetFileName(uri);
+                return webCacheDir + uri.Host + "\\" + GetFileName(url);
             }
             catch (Exception)
             {

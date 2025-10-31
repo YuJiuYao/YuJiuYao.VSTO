@@ -12,11 +12,13 @@ namespace VSTO.Common
         /// 缓存文件缓存到内存中，一个项目大概十来M静态文件，完全可以缓存到内存重
         /// <para>key：文件物理路径。value：文件流</para>
         /// </summary>
-        public static ConcurrentDictionary<string, MemoryStream> DicCacheInMemo = new ConcurrentDictionary<string, MemoryStream>();
+        public static readonly ConcurrentDictionary<string, MemoryStream> DicCacheInMemo = new ConcurrentDictionary<string, MemoryStream>();
+
         /// <summary>
         /// 内存缓存web截图，用户打开窗口无感
         /// </summary>
-        public static ConcurrentDictionary<string, Bitmap> DicWebShot = new ConcurrentDictionary<string, Bitmap>();
+        public static readonly ConcurrentDictionary<string, Bitmap> DicWebShot = new ConcurrentDictionary<string, Bitmap>();
+
         /// <summary>
         /// Webview2支持的最低版本
         /// <para>16.0.13127.20082</para>
@@ -36,7 +38,7 @@ namespace VSTO.Common
         /// <summary>
         /// 项目运行的目录
         /// </summary>
-        protected static readonly string BaseDirectoryPath = AppDomain.CurrentDomain.BaseDirectory;
+        public static readonly string BaseDirectoryPath = AppDomain.CurrentDomain.BaseDirectory;
 
         /// <summary>
         /// 用户配置文件路径
@@ -46,7 +48,7 @@ namespace VSTO.Common
         /// <summary>
         /// 前端地址
         /// </summary>
-        public static string FrontUrl = null;
+        public static readonly string FrontUrl = null;
 
         /// <summary>
         /// 后端地址
@@ -56,6 +58,6 @@ namespace VSTO.Common
         /// <summary>
         /// 是否开启Debug模式，1开启，0关闭
         /// </summary>
-        public static bool IsDebugModel = true;
+        public static readonly bool IsDebugModel = true;
     }
 }

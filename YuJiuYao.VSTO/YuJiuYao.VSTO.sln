@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 17.14.36623.8
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VSTO.Word", "VSTO.Word\VSTO.Word.csproj", "{33AA993C-F670-4F94-A90C-0F1FFD9D8251}"
+	ProjectSection(ProjectDependencies) = postProject
+		{63B0FFD6-CB91-41EA-96DD-14E0350A760E} = {63B0FFD6-CB91-41EA-96DD-14E0350A760E}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VSTO.Forms", "VSTO.Forms\VSTO.Forms.csproj", "{398201AF-2D2C-4FEC-B619-327F4E73E4BF}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -11,6 +14,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VSTO.Forms", "VSTO.Forms\VS
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VSTO.Common", "VSTO.Common\VSTO.Common.csproj", "{AB0E390A-99EC-41AB-B1AB-EBD1BE5DD3E3}"
+	ProjectSection(ProjectDependencies) = postProject
+		{63B0FFD6-CB91-41EA-96DD-14E0350A760E} = {63B0FFD6-CB91-41EA-96DD-14E0350A760E}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VSTO.Models", "VSTO.Models\VSTO.Models.csproj", "{63B0FFD6-CB91-41EA-96DD-14E0350A760E}"
 EndProject

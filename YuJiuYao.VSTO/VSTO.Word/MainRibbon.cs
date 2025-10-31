@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 using Microsoft.Office.Tools.Ribbon;
@@ -31,7 +30,10 @@ namespace VSTO.Word
 
         private void OpenCusPane_Click(object sender, RibbonControlEventArgs e)
         {
-            CustomTaskPaneHelper.OpenCustomTaskPane("https://www.yuzheng.work/", ((RibbonButton)sender).Label);
+            // 创建或指向本地页面
+            var htmlFileDir = Path.Combine(ParametersBaseHelper.BaseDirectoryPath, "HTML", "test.html");
+            var fileUrl = new Uri(htmlFileDir).AbsoluteUri; // file:/// URL
+            CustomTaskPaneHelper.OpenCustomTaskPane(fileUrl, ((RibbonButton)sender).Label);
         }
 
         private void OpenPopupBox_Click(object sender, RibbonControlEventArgs e)

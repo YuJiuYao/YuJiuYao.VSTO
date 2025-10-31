@@ -27,7 +27,7 @@
         /// <param name="status"></param>
         /// <param name="message"></param>
         /// <param name="data"></param>
-        public ApiResult(bool status, string message, T data)
+        private ApiResult(bool status, string message, T data)
         {
             Status = status;
             Message = message;
@@ -52,7 +52,7 @@
         /// <returns></returns>
         public static ApiResult<T> Fail(string message)
         {
-            return new ApiResult<T>(false, message, default(T));
+            return new ApiResult<T>(false, message, default);
         }
     }
 }

@@ -16,7 +16,7 @@ namespace VSTO.Forms.Forms
         /// <summary>
         /// UserControl 实例化时传递url已经前端参数，不可在load里面加载无效
         /// </summary>
-        /// <param name="url">前端url路由</param>
+        /// <param name="url">前端url路由或 file:// 本地页面</param>
         /// <param name="param">url携带的参数</param>
         /// <param name="isAgent"></param>
         public YzControl(string url = "", string param = "", bool isAgent = false)
@@ -25,13 +25,21 @@ namespace VSTO.Forms.Forms
             try
             {
                 webFormView.InitForm(ParametersBaseHelper.DicCacheInMemo, ParametersBaseHelper.DicWebShot, new ClientPortal(webFormView), ParametersBaseHelper.IsDebugModel ? 1 : 0);
-                if (url.StartsWith("http"))
+                if (!string.IsNullOrEmpty(url))
                 {
-                    webFormView.Url = url;
-                }
-                else
-                {
-                    webFormView.Url = ParametersBaseHelper.FrontUrl + url;
+                    // 支持 http/https以及 file:// 本地页面
+                    if (url.StartsWith("http", StringComparison.OrdinalIgnoreCase) || url.StartsWith("file:", StringComparison.OrdinalIgnoreCase))
+                    {
+                        webFormView.Url = url;
+                    }
+                    else if (!string.IsNullOrEmpty(ParametersBaseHelper.FrontUrl))
+                    {
+                        webFormView.Url = ParametersBaseHelper.FrontUrl + url;
+                    }
+                    else
+                    {
+                        webFormView.Url = url;
+                    }
                 }
                 WebView2 = webFormView.WebView2;
             }

@@ -35,7 +35,7 @@ namespace VSTO.Forms.BaseForms
         /// <summary>
         /// webview2的用户数据文件目录，cookie、web缓存。软件运行目录\Temp\WebUserData
         /// </summary>
-        private static string _webUserDataDir = AppDomain.CurrentDomain.BaseDirectory + "Temp\\WebUserData\\";
+        private static readonly string WebUserDataDir = AppDomain.CurrentDomain.BaseDirectory + "Temp\\WebUserData\\";
 
         /// <summary>
         /// web静态文件缓存地址，手动管理。静态文件根据版本号管理。软件运行目录\Cache\Web\域名\文件名.v0
@@ -105,7 +105,7 @@ namespace VSTO.Forms.BaseForms
             //此处使用DesignMode判断暂时规避，可以正常使用。
             if (DesignMode) return;
             if (!string.IsNullOrEmpty(Url)) GetWebShot(Url); //放在初始化之前，因为初始化也会白屏一段时间
-            var env = await CoreWebView2Environment.CreateAsync(null, _webUserDataDir, null);
+            var env = await CoreWebView2Environment.CreateAsync(null, WebUserDataDir, null);
             //异步设置使变量生效。
             try
             {
@@ -114,6 +114,19 @@ namespace VSTO.Forms.BaseForms
             catch //页面未加载关闭窗口，会报：System.Runtime.InteropServices.COMException:“已中止操作 (异常来自 HRESULT:0x80004004 (E_ABORT))”
             {
                 return;
+            }
+
+            // 注入供JS调用的Host对象
+            if (JsApi != null)
+            {
+                try
+                {
+                    webView.CoreWebView2.AddHostObjectToScript("CallClient", JsApi);
+                }
+                catch
+                {
+                    // ignore
+                }
             }
 
             //必须在初始化完成后加载
@@ -128,7 +141,7 @@ namespace VSTO.Forms.BaseForms
                 }
 
             //是否开启DEBUG模式
-            if (_isDebugModel == 1)
+            if (_isDebugModel ==1)
             {
                 //开启DEBUG模式
                 webView.CoreWebView2.Settings.AreDefaultContextMenusEnabled = true;
@@ -147,7 +160,7 @@ namespace VSTO.Forms.BaseForms
             //屏幕小的时候，采用移动端模式
             if (UserAgent)
                 webView.CoreWebView2.Settings.UserAgent =
-                    $"Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Bider/{_version} Version/13.0.3 Mobile/15E148 Safari/604.1";
+                    $"Mozilla/5.0 (iPhone; CPU iPhone OS13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Bider/{_version} Version/13.0.3 Mobile/15E148 Safari/604.1";
         }
 
         /// <summary>

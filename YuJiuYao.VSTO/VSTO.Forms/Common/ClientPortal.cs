@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Runtime.InteropServices;
+using System.Reflection;
 using Newtonsoft.Json;
 using VSTO.Forms.BaseForms;
 using VSTO.Models;
@@ -13,7 +14,7 @@ namespace VSTO.Forms.Common
         private readonly WebFormView _webFormView;
 
         /// <summary>
-        /// 构造函数，如果ctl没用的话，建议删除
+        /// 构造函数，如果webFormView没用的话，建议删除
         /// </summary>
         /// <param name="webFormView"></param>
         public ClientPortal(WebFormView webFormView)
@@ -30,17 +31,56 @@ namespace VSTO.Forms.Common
         /// <returns></returns>
         public string GetData(string action, string data, string evalJs = "")
         {
-            string result;
-            switch (action)
+            try
             {
-                case "GetDate":
-                    result = JsonConvert.SerializeObject(ApiResult<DateTime>.Success(DateTime.Now));
-                    break;
-                default:
-                    result = JsonConvert.SerializeObject(ApiResult<string>.Fail("获取失败"));
-                    break;
+                switch (action)
+                {
+                    case "GetDate":
+                        return JsonConvert.SerializeObject(ApiResult<DateTime>.Success(DateTime.Now));
+                    case "InsertText":
+                        InsertTextAtSelection(data ?? string.Empty);
+                        if (!string.IsNullOrWhiteSpace(evalJs))
+                        {
+                            // 回调前端
+                            _webFormView?.WebView2?.CoreWebView2?.ExecuteScriptAsync(evalJs);
+                        }
+                        return JsonConvert.SerializeObject(ApiResult<string>.Success("ok"));
+                    default:
+                        return JsonConvert.SerializeObject(ApiResult<string>.Fail("未知操作"));
+                }
             }
-            return result;
+            catch (Exception ex)
+            {
+                return JsonConvert.SerializeObject(ApiResult<string>.Fail(ex.Message));
+            }
+        }
+
+        private void InsertTextAtSelection(string text)
+        {
+            //通过反射进行 COM 后期绑定，避免添加 Office 引用或 dynamic依赖
+            var app = GetWordApp();
+            if (app == null) throw new InvalidOperationException("未找到Word进程");
+
+            var appType = app.GetType();
+            // 获取 Selection 对象
+            var selection = appType.InvokeMember("Selection", BindingFlags.GetProperty, null, app, null);
+            if (selection == null) throw new InvalidOperationException("无法获取选择对象");
+
+            var selType = selection.GetType();
+            // 调用 TypeText 方法
+            selType.InvokeMember("TypeText", BindingFlags.InvokeMethod, null, selection, new object[] { text });
+        }
+
+        private object GetWordApp()
+        {
+            try
+            {
+                return Marshal.GetActiveObject("Word.Application");
+            }
+            catch
+            {
+                return null;
+            }
         }
 
     }

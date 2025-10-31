@@ -164,7 +164,7 @@ namespace VSTO.Common
         /// <param name="url">URL请求地址</param>
         /// <param name="hasVersion">是否包含版本号，若包含，则文件名后面增加 .v0</param>
         /// <returns></returns>
-        public static string GetFileName(string url, bool hasVersion = true)
+        protected static string GetFileName(string url, bool hasVersion = true)
         {
             try
             {
@@ -183,10 +183,10 @@ namespace VSTO.Common
         /// <param name="uri">URL请求地址</param>
         /// <param name="hasVersion">是否包含版本号，若包含，则文件名后面增加 .v0</param>
         /// <returns></returns>
-        public static string GetFileName(Uri uri, bool hasVersion = true)
+        private static string GetFileName(Uri uri, bool hasVersion = true)
         {
             //获取文件名
-            string fileName = Path.GetFileName(uri.AbsolutePath);
+            var fileName = Path.GetFileName(uri.AbsolutePath);
             //有的文件名太长。比如一些svg请求。指定的路径或文件名太长，或者两者都太长。完全限定文件名必须少于 260 个字符，并且目录名必须少于 248 个字符。
             if (string.IsNullOrEmpty(fileName) || fileName.Length > 128)
             {
